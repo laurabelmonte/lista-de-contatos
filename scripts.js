@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchTerm = e.target.value.toLowerCase();
     const contacts = getContacts();
     const filteredContacts = contacts.filter((contact) =>
-      contact.nome.toLowerCase().includes(searchTerm)
+      contact.nome.toLowerCase().startsWith(searchTerm)
     );
     renderContacts(filteredContacts);
   });
