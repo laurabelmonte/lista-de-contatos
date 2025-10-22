@@ -87,6 +87,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     saveContacts(contacts);
+    if (id) {
+      filterInput.value = "";};
     renderContacts();
     closeModal();
   });
