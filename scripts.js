@@ -96,13 +96,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const contacts = getContacts();
     const id = e.target.dataset.id;
 
-    if (e.target.classList.contains("remove-btn")) {
-      if (confirm("Tem certeza que deseja remover este contato?")) {
-        const updatedContacts = contacts.filter((contact) => contact.id != id);
-        saveContacts(updatedContacts);
+  if (e.target.classList.contains("remove-btn")) {
+    if (confirm("Tem certeza que deseja remover este contato?")) {
+      const updatedContacts = contacts.filter((contact) => contact.id != id);
+      saveContacts(updatedContacts);
+
+      const searchTerm = filterInput.value.toLowerCase();
+      if (searchTerm) {
+       const filteredContacts = updatedContacts.filter((contact) =>
+         contact.nome.toLowerCase().startsWith(searchTerm)
+       );
+       renderContacts(filteredContacts);
+     } else {
         renderContacts();
-      }
-    }
+     }
+    }};
 
     if (e.target.classList.contains("edit-btn")) {
       const contactToEdit = contacts.find((contact) => contact.id == id);
